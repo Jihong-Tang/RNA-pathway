@@ -4,12 +4,12 @@
 - [Table of Contents](#table-of-contents)
 - [Name](#name)
 - [Abstract](#abstract)
+- [Introduction](#introduction)
       - [Notes](#notes)
       - [Arranged conclusion](#arranged-conclusion)
-- [Introduction](#introduction)
-      - [Notes](#notes-1)
-      - [Arranged conclusion](#arranged-conclusion-1)
   - [Nuclear step of miRNA processing](#nuclear-step-of-mirna-processing)
+      - [Notes](#notes-1)
+      - [Arranged conclusions](#arranged-conclusions)
   - [Cytoplasmic step of miRNA processing](#cytoplasmic-step-of-mirna-processing)
   - [Role of RBPs in the regulation of miRNA biogenesis](#role-of-rbps-in-the-regulation-of-mirna-biogenesis)
 - [Reference](#reference)
@@ -19,7 +19,7 @@
 Paper Notes of [Post-transcriptional control of miRNA biogenesis](http://rnajournal.cshlp.org/lookup/doi/10.1261/rna.)
 
 # Abstract
-#### Notes
+> Notes
 * [Endoribonuclease](https://en.wikipedia.org/wiki/Endoribonuclease): An Endoribonuclease is a `ribonuclease endonuclease`. It cleaves either single-stranded or double-stranded RNA, depending on the enzyme.
 * Terms
 
@@ -28,7 +28,7 @@ Paper Notes of [Post-transcriptional control of miRNA biogenesis](http://rnajour
 |**RISC**| RNA-induced-silencing complex|
 |**RBPs**| RNA-binding proteins|
 
-#### Arranged conclusion
+> Arranged conclusion
 * MicroRNAs ==> important regulators of gene express; bind to mRNAs; repress the expression
 * Procedure of precursor miRNA to mature miRNA happens in both nuclear and cytoplasmic environment, with the help of *DROSHA* and *DICER* respectively
 * Papers focus on post-transcriptional mechanisms, including both *cis*-acting and *trans*-acting factors
@@ -64,6 +64,9 @@ Paper Notes of [Post-transcriptional control of miRNA biogenesis](http://rnajour
   * The *cytoplasm event* is catalyzed by the RNase III `DICER` to give rise to `miRNA duplexes`. ==> incorporated into the `RISC` with `AGO` ==> one strand is chosed to become the mature miRNA.
 
 ## Nuclear step of miRNA processing
+#### Notes
+
+#### Arranged conclusions
 
 ## Cytoplasmic step of miRNA processing
 
