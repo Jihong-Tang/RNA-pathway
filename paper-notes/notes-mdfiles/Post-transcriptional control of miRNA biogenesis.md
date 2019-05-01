@@ -1,9 +1,14 @@
 [TOC levels=1-4]: #
 
 # Table of Contents
+- [Table of Contents](#table-of-contents)
 - [Name](#name)
 - [Abstract](#abstract)
+      - [Notes](#notes)
+      - [Arranged conclusion](#arranged-conclusion)
 - [Introduction](#introduction)
+      - [Notes](#notes-1)
+      - [Arranged conclusion](#arranged-conclusion-1)
 - [Reference](#reference)
 - [Author](#author)
 
@@ -27,6 +32,26 @@ Paper Notes of [Post-transcriptional control of miRNA biogenesis](http://rnajour
 * Highlight the role of **RBPs** in the RNA pathway
 
 # Introduction
+#### Notes
+* Many miRNA genes are transcribed by RNA polymerase II(Pol II), and the sources of the genes could be divided into three parts:
+  * intronic clusters of within protein-coding pre-mRNAs ==> most parts
+  * independent gene units
+  * been encoded within long non-coding RNAs (lncRNAs)
+* Canonical miRNA biogenesis pathway includes two subsequent processing events, happened in the nucleus and in the cytoplasm respectively, and with the help of RNase III `Drosha` and `Dicer` respectively.
+* Noncanonical miRNA biogenesis pathways may lead to the production of functional miRNAs, and may include following pathways:
+  * `mitrons` generated via pre-mRNA splicing
+  * miRNAs generated from `small nucleolar RNA`([snoRNAs](https://en.wikipedia.org/wiki/Small_nucleolar_RNA)) precursors
+* Terms
+
+| Abbreviation | Whole name|
+| :---: | :---: |
+|pri-miRNA| long primary transcript to form the microRNA|
+| pre-miRNA | ~ 70 nucleotide stem-loop precursor miRNAs|
+|**DGCR8**| DiGeorge syndrome critical region 8 gene|
+|**RISC**| RNA-induced-silencing complex|
+| **AGO** | Argonaute protein|
+
+#### Arranged conclusion
 
 # Reference 
 
