@@ -19,7 +19,7 @@
 Paper Notes of [Post-transcriptional control of miRNA biogenesis](http://rnajournal.cshlp.org/lookup/doi/10.1261/rna.)
 
 # Abstract
-> Notes
+> <font color=red size=3>Notes</font>
 * [Endoribonuclease](https://en.wikipedia.org/wiki/Endoribonuclease): An Endoribonuclease is a `ribonuclease endonuclease`. It cleaves either single-stranded or double-stranded RNA, depending on the enzyme.
 * Terms
 
@@ -28,7 +28,7 @@ Paper Notes of [Post-transcriptional control of miRNA biogenesis](http://rnajour
 |**RISC**| RNA-induced-silencing complex|
 |**RBPs**| RNA-binding proteins|
 
-> Arranged conclusion
+> <font color=red size=3>Arranged conclusions</font>
 * MicroRNAs ==> important regulators of gene express; bind to mRNAs; repress the expression
 * Procedure of precursor miRNA to mature miRNA happens in both nuclear and cytoplasmic environment, with the help of *DROSHA* and *DICER* respectively
 * Papers focus on post-transcriptional mechanisms, including both *cis*-acting and *trans*-acting factors
