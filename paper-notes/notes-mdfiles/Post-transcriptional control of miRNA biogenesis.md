@@ -9,6 +9,9 @@
 - [Introduction](#introduction)
       - [Notes](#notes-1)
       - [Arranged conclusion](#arranged-conclusion-1)
+  - [Nuclear step of miRNA processing](#nuclear-step-of-mirna-processing)
+  - [Cytoplasmic step of miRNA processing](#cytoplasmic-step-of-mirna-processing)
+  - [Role of RBPs in the regulation of miRNA biogenesis](#role-of-rbps-in-the-regulation-of-mirna-biogenesis)
 - [Reference](#reference)
 - [Author](#author)
 
@@ -52,6 +55,20 @@ Paper Notes of [Post-transcriptional control of miRNA biogenesis](http://rnajour
 | **AGO** | Argonaute protein|
 
 #### Arranged conclusion
+* Detailed procedure of the canonical biogenesis of miRNAs
+  * The *nuclear event* is catalyzed by the `Microprocessor complex`, and the result production is the ~ 79 nt stem-loop `pre-miRNAs`. The `Microprocessor complex` consists of the following:
+    * RNase III `DROSHA`
+    * ds RBP `DGCR8`
+    * associated proteins
+  * The `pre-miRNAs` are exported to the cytoplasm using the export receptor, `Exportin-5`.
+  * The *cytoplasm event* is catalyzed by the RNase III `DICER` to give rise to `miRNA duplexes`. ==> incorporated into the `RISC` with `AGO` ==> one strand is chosed to become the mature miRNA.
+
+## Nuclear step of miRNA processing
+
+## Cytoplasmic step of miRNA processing
+
+## Role of RBPs in the regulation of miRNA biogenesis
+
 
 # Reference 
 
