@@ -8,7 +8,7 @@
   - [Nuclear step of miRNA processing](#nuclear-step-of-mirna-processing)
   - [Noncanonical functions of the Microprocessor](#noncanonical-functions-of-the-microprocessor)
   - [Cytoplasmic step of miRNA processing](#cytoplasmic-step-of-mirna-processing)
-  - [Role of RBPs in the regulation of miRNA biogenesis](#role-of-rbps-in-the-regulation-of-mirna-biogenesis)
+- [Role of RBPs in the regulation of miRNA biogenesis](#role-of-rbps-in-the-regulation-of-mirna-biogenesis)
 - [Reference](#reference)
 - [Author](#author)
 
@@ -61,6 +61,18 @@ Paper Notes of [Post-transcriptional control of miRNA biogenesis](http://rnajour
   * The *cytoplasm event* is catalyzed by the RNase III `DICER` to give rise to `miRNA duplexes`. ==> incorporated into the `RISC` with `AGO` ==> one strand is chosed to become the mature miRNA.
 
 ## Nuclear step of miRNA processing
+> Notes
+* The nuclear phase of miRNA processing happens cotranscriptionally acting on both independently transcribed and intron-encoded miRNA. And the process is facilitated by `HP1BP3`, a histone H1-like chromatin protein.
+* Determinants to distinguish the pri-miRNA from other hairpin-containing transcripts:
+  * one ~35 bp stem harboring a mismatched GHG motif and three primary-sequence elements as following
+  * a basal UG motif
+  * an apical UGUG motif
+  * a CNNC motif, which could bind to the SR protein ==> SRSF3
+  * the presence of an N6-Methyladenosine (m6A) mark in the vincity of the pri-miRNA stem-loop( this mark is bound by the reader ==> the hnRNP protein, A2/B1 ==> interacts with DGCR8 to stimulate the processing)
+* The precise mechanism by which the `Microprocessor` recognizes the pri-miRNA and catalyzes their processing:
+  * The structure of `Microprocessor`: heterotrimeric complex comprising one `DROSHA` and two `DGCR8` molecules
+  * The function of `DGCR8` dimer: interact with the 
+
 
 
 ## Noncanonical functions of the Microprocessor
@@ -69,7 +81,7 @@ Paper Notes of [Post-transcriptional control of miRNA biogenesis](http://rnajour
 ## Cytoplasmic step of miRNA processing
 
 
-## Role of RBPs in the regulation of miRNA biogenesis
+# Role of RBPs in the regulation of miRNA biogenesis
 
 
 # Reference 
