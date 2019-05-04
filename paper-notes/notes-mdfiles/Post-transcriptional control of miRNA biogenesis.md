@@ -102,10 +102,12 @@ The cytoplasmic processing could be figured as the right part of the part A of t
 ## Noncanonical functions of the Microprocessor
 
 
-
-
-
 # Role of RBPs in the regulation of miRNA biogenesis
+
+
+| RBP| step \| effect| mechanism| Target miRNAs|
+| :---: | :---: | :---: | :---: |
+| LIN28A | Dicer \| -| Binds let-7 and blocks Dicer processing; Recruits TUTases(TUT4 or TUT7) and induces oligouridylations| let-7, miR-9, miR-107, miR-143, miR-200c|
 
 
 # Reference 
