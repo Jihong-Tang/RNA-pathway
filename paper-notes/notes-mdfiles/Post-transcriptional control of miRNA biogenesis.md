@@ -9,6 +9,15 @@
   - [Cytoplasmic step of miRNA processing](#cytoplasmic-step-of-mirna-processing)
   - [Noncanonical functions of the Microprocessor](#noncanonical-functions-of-the-microprocessor)
 - [Role of RBPs in the regulation of miRNA biogenesis](#role-of-rbps-in-the-regulation-of-mirna-biogenesis)
+  - [Binding of an RBP to the TL or stem](#binding-of-an-rbp-to-the-tl-or-stem)
+  - [Genetic variation](#genetic-variation)
+  - [Signaling and miRNA biogenesis](#signaling-and-mirna-biogenesis)
+  - [Summary table of the regulatory mechanism](#summary-table-of-the-regulatory-mechanism)
+- [Attempts to target the miRNA regulatory events](#attempts-to-target-the-mirna-regulatory-events)
+  - [Role of long noncoding RNAs in the control of miRNA biogenesis](#role-of-long-noncoding-rnas-in-the-control-of-mirna-biogenesis)
+  - [Physiological relevance of miRNA regulation and human disease](#physiological-relevance-of-mirna-regulation-and-human-disease)
+  - [Synthetic and natural inhibitors of miRNA biogenesis](#synthetic-and-natural-inhibitors-of-mirna-biogenesis)
+- [Conclusion and perspectives](#conclusion-and-perspectives)
 - [Reference](#reference)
 - [Author](#author)
 
@@ -104,6 +113,13 @@ The cytoplasmic processing could be figured as the right part of the part A of t
 
 # Role of RBPs in the regulation of miRNA biogenesis
 
+## Binding of an RBP to the TL or stem 
+
+## Genetic variation
+
+## Signaling and miRNA biogenesis
+
+## Summary table of the regulatory mechanism
 
 | RBP| step \| effect| mechanism| Target miRNAs|
 | :---: | :---: | :---: | :---: |
@@ -131,6 +147,16 @@ The cytoplasmic processing could be figured as the right part of the part A of t
 | SMADs| Drosha \| **+**| Binds to p68 and promotes Drosha cleavage| miR-21, miR-199a|
 | p53| Drosha \| **+**| Binds to p68 and promotes Drosha cleavage| miR-16-1, miR-143, miR-145|
 | BRCA1| Drosha \| **+**| Unknown| let-7a-1, miR-16-1, miR-145, miR-34a|
+
+# Attempts to target the miRNA regulatory events
+
+## Role of long noncoding RNAs in the control of miRNA biogenesis
+
+## Physiological relevance of miRNA regulation and human disease
+
+## Synthetic and natural inhibitors of miRNA biogenesis
+
+# Conclusion and perspectives
 # Reference 
 [Post-transcriptional control of miRNA biogenesis](http://rnajournal.cshlp.org/lookup/doi/10.1261/rna.068692.118)
 
