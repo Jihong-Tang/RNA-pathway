@@ -1,12 +1,13 @@
 [TOC levels=1-3]: #
 
 # Table of Contents
+- [Table of Contents](#table-of-contents)
 - [Name](#name)
 - [Purpose](#purpose)
 - [Data downloading](#data-downloading)
-    - [Sequencing data](##sequencing-data)
-    - [Reference genome data](##reference-genome-data)
-- [Reference](#reference)
+  - [Sequencing data](#sequencing-data)
+  - [Reference genome data](#reference-genome-data)
+- [Quality control of data](#quality-control-of-data)
 - [Author](#author)
 
 # Name
@@ -41,6 +42,24 @@ sh $HOME/Scripts/shell/download_beyond_2nd.sh ./beyond_2nd/
 ## Reference genome data 
 **Updating** 
 * may be not used 
+
+# Quality control of data
+After downloading the data, we could have the first look to our data by doing some quality control work based on software [`FastQc`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/).
+
+```bash
+# basic command line method
+cd $HOME/RNA_pathway/data/seq_data/beyond_2nd/
+
+for for dir in SRX131966_data SRX132060_data SRX132063_data SRX137000_data SRX137001_data SRX137002_data SRX137003_data
+do
+    cd ${dir}
+    mkdir -p ./fastqc_result
+    fastqc -o ./fastqc_result/ ./*.fastq.gz
+done
+
+# bash script method
+sh $HOME/Scripts/shell/beyond_2nd_fastqc.sh $HOME/RNA_pathway/data/seq_data/beyond_2nd/ 
+```
 
 # Author 
 Jihong Tang &lt;njutangjihong@gmail.com&gt; Instructed by Jun Lu and Dingyao Zhang
