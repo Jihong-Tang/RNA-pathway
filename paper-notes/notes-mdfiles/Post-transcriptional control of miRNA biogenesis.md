@@ -107,9 +107,30 @@ The cytoplasmic processing could be figured as the right part of the part A of t
 
 | RBP| step \| effect| mechanism| Target miRNAs|
 | :---: | :---: | :---: | :---: |
-| LIN28A | Dicer \| -| Binds let-7 and blocks Dicer processing; Recruits TUTases(TUT4 or TUT7) and induces oligouridylations| let-7, miR-9, miR-107, miR-143, miR-200c|
-
-
+| LIN28A | Dicer \| **-**| Binds let-7 and blocks Dicer processing; Recruits TUTases(TUT4 or TUT7) and induces oligouridylations| let-7, miR-9, miR-107, miR-143, miR-200c|
+| LIN28B | Drosha \| **-**| Binds let-7 TL and blocks Drosha processing| let-7 |
+| hnRNP A1| Drosha \| **+**| Promotes Drosha cleavage by restructing pri-mir-18a| miR-18a |
+| hnRNP A1| Drosha \| **-**| Inhibits Drosha processing by competing out KSRP binding| let-7 |
+| KSRP| Drosha & Dicer \| **+**| Unknown| let-7, miR-16, miR-21, miR-26b, miR-106a|
+| TDP-43| Drosha & Dicer \| **+**| Unknown | miR-132, miR-143, miR-558-3p, miR-574-3p|
+| SRSF1| Drosha \| **+**| Unknown| miR-7, miR-29b, miR-221, miR-222|
+| FUS/TLS| Drosha \| **+**| Recruits Drosha cotranscriptionally | miR-9, miR-125b, miR-132|
+| EWS| Drosha \| **+** | Recruits Drosha cotranscriptionally| Subset of miRNAs|
+| RBFOX3| Drosha \| **+** | Binds to TL and facilitates Microprocessor recruitment| miR-15|
+| RBFOX3| Drosha \| **-**| Binds to the stem and blocks Microprocessor recruitment| miR-485|
+| RBFOX2| Drosha \| **-**| Binds to TL and leads to structural changes in the TL blocking Microprocessor binding and/or function| miR-20b, miR-107|
+| HuR/MSI2| Drosha \| **-**| HuR recruits MSI2, this complex stablizes the stem and blocks Microprocessor cleavage| miR-7|
+| ADAR1,2| Drosha \| **-**| A to I editing in the stem leads to inhibition of Drosha cleavage| miR-142|
+| ADAR1| Dicer \| **-** | A to I editing in the stem leas to the inhibition of Dicer cleavage| miR-151|
+| ADAR2| Drosha \| **-**| Binds to the stem and blocks Drosha processing independently of catalytic activity| miR-376a|
+| NF45/90| Drosha \| **-**| Unknown | miR-7 |
+| YB-1| Drosha \| **-**| Unknown| miR-29b-2|
+| YB-1| Dicer \| **-**| Unknown| miR-29b-2|
+| MBNL1| Dicer \| **+**| Binds to TL and competes out binding of the negative regulator LIN28| miR-1|
+| BCDIN3D| Dicer \| **-**| Methylates monophosphate ends of pre-miRNAs leading to inhibition of Dicer processing| miR-145|
+| SMADs| Drosha \| **+**| Binds to p68 and promotes Drosha cleavage| miR-21, miR-199a|
+| p53| Drosha \| **+**| Binds to p68 and promotes Drosha cleavage| miR-16-1, miR-143, miR-145|
+| BRCA1| Drosha \| **+**| Unknown| let-7a-1, miR-16-1, miR-145, miR-34a|
 # Reference 
 
 # Author
