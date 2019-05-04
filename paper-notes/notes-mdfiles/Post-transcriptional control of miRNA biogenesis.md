@@ -132,6 +132,7 @@ The cytoplasmic processing could be figured as the right part of the part A of t
 | p53| Drosha \| **+**| Binds to p68 and promotes Drosha cleavage| miR-16-1, miR-143, miR-145|
 | BRCA1| Drosha \| **+**| Unknown| let-7a-1, miR-16-1, miR-145, miR-34a|
 # Reference 
+[Post-transcriptional control of miRNA biogenesis](http://rnajournal.cshlp.org/lookup/doi/10.1261/rna.068692.118)
 
 # Author
 Jihong Tang
