@@ -1,14 +1,14 @@
 [TOC levels=1-3]: #
 
 # Table of Contents
-- [Table of Contents](#table-of-contents)
-- [Name](#name)
-- [Purpose](#purpose)
-- [Data downloading](#data-downloading)
-  - [Sequencing data](#sequencing-data)
-  - [Reference genome data](#reference-genome-data)
-- [Quality control of data](#quality-control-of-data)
-- [Author](#author)
+- [Table of Contents](#Table-of-Contents)
+- [Name](#Name)
+- [Purpose](#Purpose)
+- [Data downloading](#Data-downloading)
+  - [Sequencing data](#Sequencing-data)
+- [Data downloading in Yale](#Data-downloading-in-Yale)
+- [Quality control of data](#Quality-control-of-data)
+- [Author](#Author)
 
 # Name
 miRNA pathway procedure - Quantitative modeling of licensing codes for RNAs to enter the microRNA processing pathway
@@ -39,9 +39,14 @@ cd $HOME/RNA-pathway/data/seq_data/
 sh $HOME/Scripts/shell/download_de_novo_design.sh ./de_novo_design/
 sh $HOME/Scripts/shell/download_beyond_2nd.sh ./beyond_2nd/
 ```
-## Reference genome data 
-**Updating** 
-* may be not used 
+# Data downloading in Yale
+Using the ftp address gotten from the previous part and the powerful High Performance Computing(HPC) resources in Yale, we could download the data by schedule the job using slurm as following.
+
+In addition, the detailed usage of the powerful cluster farnam could be found [here](./cluster-usage.md).
+
+```bash
+sbatch $HOME/Scripts/shell/data_downloading.sh
+```
 
 # Quality control of data
 After downloading the data, we could have the first look to our data by doing some quality control work based on software [`FastQc`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/).
