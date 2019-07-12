@@ -96,3 +96,32 @@ tmux kill-server
 ```
 
 # Software usage
+There are many softwares installed in the Yale clusters, and they are packed into the form of modules. If we want to use these softwares, we could load or unload these modules to help finish our work.
+
+```bash
+# list all existed modules 
+module list
+
+# find all available modules in the cluster
+module avail
+
+# find available modules based on the given pattern strings
+module avail <pattern>
+
+# load and unload modules
+module load <module_name>
+module unload <module_name>
+
+# create a saved environment, simply load all of your desired modules and then 
+module save
+
+# create a named saved environment
+module save <environment_name>
+
+# load the saved environments
+module restore 
+module restore <environment_name>
+
+# check the existed environments
+module savelist
+```
