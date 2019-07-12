@@ -30,9 +30,69 @@ srun --pty -p interactive bash
 `Slurm` is used to submit jobs to a specified set of compute resources, which are variously called queues or partitions.
 
 The basic commands could be listed as following:
+```bash
+# submit a script
+sbatch <script>
 
-- 
+# list queued and running jobs
+squeue -u $USER
+
+# cancel a queued job or kill a running job
+scancel <job_id>
+
+# check status of individul job
+sacct -j <job_id>
+```
+
 # Saving interactive session (tmux)
 `tmux` is a "terminal multiplexer", it enables a number of terminals (or windows) to be accessed and controlled from a single terminal. 
+
+**KEEP IN MIND:** the correct procedure binding `tmux` and cluster usage could be listed as following:
+
+- ssh to the cluster of choice
+- start tmux in the login node
+- inside the tmux session, submit an interactive job with srun
+- inside the job allocation(on a compute node), start the application node
+- detach from `tmux` by typing `Ctrl` + `b` and the `d`
+- on the name login node, reattach by running `tmux attach`
+
+```bash
+#Start new named session:
+tmux new -s [session name]
+
+#Detach from session:
+ctrl+b d
+
+#List sessions:
+tmux ls
+
+#Attach to named session:
+tmux a -t [name of session]
+
+#Kill named session:
+tmux kill-session -t [name of session]
+
+#Split panes horizontally:
+ctrl+b "
+#"
+
+#Split panes vertically:
+ctrl+b %
+
+#Kill current pane:
+ctrl+b x
+
+#Move to another pane:
+ctrl+b [arrow key]
+
+#Cycle through panes:
+ctrl+b o
+
+#Cycle just between previous and current pane:
+ctrl+b ;
+
+#Kill tmux server, along with all sessions:
+tmux kill-server
+```
 
 # Software usage

@@ -55,7 +55,7 @@ After downloading the data, we could have the first look to our data by doing so
 # basic command line method
 cd $HOME/RNA_pathway/data/seq_data/beyond_2nd/
 
-for for dir in SRX131966_data SRX132060_data SRX132063_data SRX137000_data SRX137001_data SRX137002_data SRX137003_data
+for dir in SRX131966_data SRX132060_data SRX132063_data SRX137000_data SRX137001_data SRX137002_data SRX137003_data
 do
     cd ${dir}
     mkdir -p ./fastqc_result
