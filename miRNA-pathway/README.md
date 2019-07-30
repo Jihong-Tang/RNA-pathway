@@ -66,5 +66,9 @@ done
 sh $HOME/Scripts/shell/beyond_2nd_fastqc.sh $HOME/RNA_pathway/data/seq_data/beyond_2nd/ 
 ```
 
+```bash
+find /path/to/source -type f -name '*.txt' -exec cat {} + >mergedfile
+```
+
 # Author 
 Jihong Tang &lt;njutangjihong@gmail.com&gt; Instructed by Jun Lu and Dingyao Zhang
