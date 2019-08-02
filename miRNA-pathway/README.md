@@ -25,6 +25,10 @@
   - [Code](#code-2)
     - [Matlab reading script](#matlab-reading-script)
     - [Job batching script](#job-batching-script)
+- [Step -4: HairpIndex program usage](#step--4-hairpindex-program-usage)
+  - [Step introduction](#step-introduction-3)
+  - [Job batch script](#job-batch-script)
+- [Step -5: Hairpin features information extraction](#step--5-hairpin-features-information-extraction)
 - [Author](#author)
 
 # Name
@@ -515,6 +519,48 @@ In addition, the method to run Matlab scripts from command line in the Linux sys
 ```bash
 matlab -nodisplay -nosplash -nodesktop -r "run('path/to/your/script.m');exit;" | tail -n +11
 ```
+
+# Step -4: HairpIndex program usage
+## Step introduction
+After the data preparation step, we could use the HairpIndex program in each subfolder for three different folders representing mir125, mir16 and mir30 respectively.
+
+Since the program would cost lots of time and computation resources to finish the job, it is necessary to use the paralleling methods mentioned above in this step.
+
+## Job batch script
+```bash
+#!/bin/bash
+#SBATCH --partition=general
+#SBATCH --job-name=test_seqanalyzer
+#SBATCH --ntasks=8 --nodes=1
+#SBATCH --mem-per-cpu=6000
+#SBATCH --time=12:00:00
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=njutangjihong@gmail.com
+
+#Script description: This is the parallelized bash script to transfer all the mir125 Ye #Author: Jihong Tang
+#Date: August 1, 2019
+
+module load MATLAB
+module load parallel
+dir="$HOME/project/miRNA_model/Sfold_info/Sfold_result/"
+
+mirtest=$dir"test/"
+cd $mirtest
+foo () {	
+  local subdir=$1
+  dir="$HOME/project/miRNA_model/Sfold_info/Sfold_result/"
+  cd $dir
+  file="./test/"$subdir"/RNAcen_res"
+  matlab -nodesktop -nosplash -nodisplay -r "gaillard_miRNA_analyzer_v_1_1_JunMod('$file');exit" | tail -n +11
+  echo "Job "$subdir" finished!"
+}
+export -f foo
+find . -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | parallel "foo {}"
+
+```
+Attention: put both `gaillard_miRNA_analyzer_v_1_1_JunMod.m` and `gaillard_sequence_characteristics_v_1_1.m` scripts in the working directory.
+
+# Step -5: Hairpin features information extraction
 
 
 
