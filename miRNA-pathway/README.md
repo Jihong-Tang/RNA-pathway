@@ -15,6 +15,7 @@
     - [Reference files creation](#reference-files-creation)
     - [Sequence selection](#sequence-selection)
     - [Data visulization check](#data-visulization-check)
+- [Step - 2:](#step---2)
 - [Author](#author)
 
 # Name
@@ -243,6 +244,8 @@ mir125_10per_normal %>%
   geom_density()+
   labs(title="mir125_10per_normal")
 ```
+
+# Step - 2: 
 
 # Author 
 Jihong Tang &lt;njutangjihong@gmail.com&gt; Instructed by Jun Lu and Dingyao Zhang
