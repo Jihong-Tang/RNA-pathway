@@ -437,7 +437,7 @@ find . -mindepth 1 -maxdepth 1 -type d -printf '%f\n'
 # Step -3: Matlab-based data preparation
 
 ## Step introduction
-The `[HairpIndex pipeline](https://genome.cshlp.org/content/27/3/374)` is used to extract the hairpin information from the folding structures. In order to use this Matlab-based program, we need to transfer the data file into `.mat` data file which could be loaded into the program. The simple Matlab script as shown following is edited based on the given script in the `HairpIndex pipeline`, and the job batching scripts share the similar logic to the above one.
+The [`HairpIndex pipeline`](https://genome.cshlp.org/content/27/3/374) is used to extract the hairpin information from the folding structures. In order to use this Matlab-based program, we need to transfer the data file into `.mat` data file which could be loaded into the program. The simple Matlab script as shown following is edited based on the given script in the `HairpIndex pipeline`, and the job batching scripts share the similar logic to the above one.
 
 ## Code
 
