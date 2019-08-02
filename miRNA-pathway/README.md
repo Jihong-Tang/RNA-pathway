@@ -20,6 +20,11 @@
   - [Code](#code-1)
     - [Data processing](#data-processing)
     - [Job batching](#job-batching)
+- [Step -3: Matlab-based data preparation](#step--3-matlab-based-data-preparation)
+  - [Step introduction](#step-introduction-2)
+  - [Code](#code-2)
+    - [Matlab reading script](#matlab-reading-script)
+    - [Job batching script](#job-batching-script)
 - [Author](#author)
 
 # Name
@@ -293,6 +298,8 @@ To facilitate the downstream analysis, we should read in the the `sample_1000.ou
 
 The coding logic is based on the cluster usage. To fasten the processing, we could use the paralleling methods to batch our job. The data processing codes and job batching script could be checked in the next part.
 
+The output file contains only the sequence content, RNAFold format folding information, MFE and seuqnece name, which facilitates the preparation of Matlab data reading to use the [HairpIndex program](https://genome.cshlp.org/content/27/3/374).
+
 ## Code
 
 ### Data processing
@@ -427,6 +434,88 @@ The following command is to find all subfolders' name in a certain folder in the
 ```bash
 find . -mindepth 1 -maxdepth 1 -type d -printf '%f\n' 
 ```
+# Step -3: Matlab-based data preparation
+
+## Step introduction
+The `[HairpIndex pipeline](https://genome.cshlp.org/content/27/3/374)` is used to extract the hairpin information from the folding structures. In order to use this Matlab-based program, we need to transfer the data file into `.mat` data file which could be loaded into the program. The simple Matlab script as shown following is edited based on the given script in the `HairpIndex pipeline`, and the job batching scripts share the similar logic to the above one.
+
+## Code
+
+### Matlab reading script
+```Matlab
+function Jihong_folding_data_generator(FileNameRoot)
+%function Jihong_folding_data_generator(FileNameRoot)
+%No change is necessary below
+
+fid=fopen([FileNameRoot '.txt']);
+a = textscan(fid, '%s','delimiter', '\n');
+fclose(fid);
+a=a{1,:};
+
+% % make a while loop to load them into their own variables
+i=1;
+count=1;
+while i<=size(a,1)
+    c=a{i};
+    c2=strcat(c(1:end));
+    c2_temp=strsplit(c2,' ');
+    RNAname{count,1}=c2_temp{1};
+    RNAfasta{count,1}=c2_temp{2};
+    RNAcen{count,1}=c2_temp{3};
+    RNAcenVAL{count,1}=c2_temp{4};
+    count=count+1;
+    i=i+1;
+end
+
+disp('finished reading');
+
+save ([FileNameRoot '.mat'], 'RNAfasta', 'RNAcen', 'RNAname', 'RNAcenVAL');
+
+```
+### Job batching script
+```bash
+#!/bin/bash
+#SBATCH --partition=general
+#SBATCH --job-name=test_file_generator
+#SBATCH --ntasks=8 --nodes=1
+#SBATCH --mem-per-cpu=6000
+#SBATCH --time=12:00:00
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=njutangjihong@gmail.com
+
+#Script description: This is the parallelized bash script to read and transfer the data file in .txt format to .mat format
+#Author: Jihong Tang
+#Date: July 30, 2019
+
+module load MATLAB
+module load parallel
+dir="$HOME/project/miRNA_model/Sfold_info/Sfold_result/"
+
+mirtest=$dir"test/"
+cd $mirtest
+foo () {	
+  local subdir=$1
+  dir="$HOME/project/miRNA_model/Sfold_info/Sfold_result/"
+  cd $dir
+  file="./test/"$subdir"/RNAcen_res"
+  matlab -nodesktop -nosplash -nodisplay -r "Jihong_folding_data_generator('$file');exit" | tail -n +11
+  echo "Job "$subdir" finished!"
+
+}
+export -f foo
+find . -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | parallel "foo {}"
+
+```
+
+The command below is the method to call Matlab functions from command line in the Linux system.
+```bash
+matlab -nodesktop -nosplash -nodisplay -r "Jihong_folding_data_generator('$file');exit" | tail -n +11
+```
+In addition, the method to run Matlab scripts from command line in the Linux system could be shown as following:
+```bash
+matlab -nodisplay -nosplash -nodesktop -r "run('path/to/your/script.m');exit;" | tail -n +11
+```
+
 
 
 # Author 
