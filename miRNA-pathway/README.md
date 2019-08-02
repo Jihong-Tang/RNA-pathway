@@ -15,7 +15,9 @@
     - [Reference files creation](#reference-files-creation)
     - [Sequence selection](#sequence-selection)
     - [Data visulization check](#data-visulization-check)
-- [Step - 2:](#step---2)
+- [Step - 2: Ye Ding format data importing and transformation](#step---2-ye-ding-format-data-importing-and-transformation)
+  - [Step introduction](#step-introduction-1)
+  - [Code](#code-1)
 - [Author](#author)
 
 # Name
@@ -245,7 +247,42 @@ mir125_10per_normal %>%
   labs(title="mir125_10per_normal")
 ```
 
-# Step - 2: 
+# Step - 2: Ye Ding format data importing and transformation
+## Step introduction
+After request Ye Ding lab to help fold the sequence data we created in the last step, we could get the folding result files for all the sequences. The folding result files are arranged to thouands of subfolders which named by the sequence names we provided and there is one `sample_1000.out` file in each subfolder. The `sample_1000.put` file stores the 1000 possible folding structure information for the given sequence and the Ye Ding format to annotate the pairing information could be shown as following:
+```
+(i j k): helix formed by base pairs i-j, (i+1)-(j-1),...,(i+k-1)-(j-k+1)
+
+
+Structure        1     -47.40       0.10017E-03
+    2    17     1
+    3    15     4
+   19   138     3
+   24   132     2
+   27   117     2
+   31   114     5
+   37   108     1
+   39   106     6
+   46    99     2
+   50    95     3
+   54    91     5
+   61    84     4
+   68    75     2
+  119   130     2
+Structure        2     -51.30       0.49191E-02
+    3    15     4
+   19   138     3
+   24   132     2
+   31   114     5
+   37   108     1
+   39   106     5
+   46    99     7
+   54    91     5
+   63    84     5
+   68    75     2
+  119   130     3
+```
+## Code
 
 # Author 
 Jihong Tang &lt;njutangjihong@gmail.com&gt; Instructed by Jun Lu and Dingyao Zhang
