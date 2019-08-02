@@ -18,6 +18,8 @@
 - [Step - 2: Ye Ding format data importing and transformation](#step---2-ye-ding-format-data-importing-and-transformation)
   - [Step introduction](#step-introduction-1)
   - [Code](#code-1)
+    - [Data processing](#data-processing)
+    - [Job batching](#job-batching)
 - [Author](#author)
 
 # Name
@@ -249,7 +251,7 @@ mir125_10per_normal %>%
 
 # Step - 2: Ye Ding format data importing and transformation
 ## Step introduction
-After request Ye Ding lab to help fold the sequence data we created in the last step, we could get the folding result files for all the sequences. The folding result files are arranged to thouands of subfolders which named by the sequence names we provided and there is one `sample_1000.out` file in each subfolder. The `sample_1000.put` file stores the 1000 possible folding structure information for the given sequence and the Ye Ding format to annotate the pairing information could be shown as following:
+After request Ye Ding lab to help fold the sequence data we created in the last step, we could get the folding result files for all the sequences. The folding result files are arranged to thouands of subfolders which named by the sequence names we provided and there is one `sample_1000.out` file in each subfolder. The `sample_1000.put` file stores the 1000 possible folding structure information for the given sequence and the Ye Ding format to annotate the pairing information could be shown as below. For each struture chunk, the first line stores the name, minimum free energy(MEF) and probability information.
 ```
 (i j k): helix formed by base pairs i-j, (i+1)-(j-1),...,(i+k-1)-(j-k+1)
 
@@ -282,7 +284,150 @@ Structure        2     -51.30       0.49191E-02
    68    75     2
   119   130     3
 ```
+
+To facilitate the downstream analysis, we should read in the the `sample_1000.out` file and store the information for each structure. The work needed to be done could be divided into several parts:
+- Get the fasta sequence and the sequence name from the parameter 
+- Extract the information from the sample_1000 out file 
+- Store the structure name, MFE num and probobility num 
+- Transfer the Ye Ding's structure to the RNAFold structure 
+
+The coding logic is based on the cluster usage. To fasten the processing, we could use the paralleling methods to batch our job. The data processing codes and job batching script could be checked in the next part.
+
 ## Code
+
+### Data processing
+Regular Expression and basic string manipulation are useful in dealing with different data format, so as this one.
+
+```R
+# Date: July 22, 2019 ---
+# Set up the environment ---
+#library(tidyverse)
+
+# Stage 1: read in the the sample_1000.out file format from Ye Ding's sfold 
+# transfer certain part to the RNAFold format and store them in list-based structure
+
+# 1-Get the fasta sequence and the sequence name from the parameter ---
+# 2-Extract the information from the sample_1000 out file ---
+# 3-Store the structure name, MFE num and probobility num ---
+# 4-Transfer the Ye Ding's structure to the RNAFold structure ---
+
+# 1- Get info from the parametets
+Args <- commandArgs(T)
+file_path <- Args[1]
+seq_name <- Args[2]
+dic_path <- Args[3]
+dir_path <- Args[4]
+
+df <- read.delim2(dic_path, sep = " " ,stringsAsFactors = F)
+seq_fasta <- df[df$names == seq_name, 2]
+
+# 2- Read in the file and extract information
+#file_path <- "./test_data/sample_1000.out"
+con <- file(file_path, "r")
+
+counter <- 0
+startblock <- 0
+name <- c()
+energy <- c()
+prob <- c()
+RNAFoldformat <- c()
+YeDingformat <- list()
+
+pattern <- " +([[:digit:]]+) +([[:digit:]]+) +([[:digit:]]+)"
+proto <- data.frame(left = integer(), right = integer(), continue = integer())
+
+while(T){
+  line = readLines(con, n = 1)
+  if(length(line) == 0) break
+  if(grepl("Structure", line)){
+    startblock <- 1
+    counter <- counter + 1
+    temp <- unlist(strsplit(line, "     ", fixed = T))
+    name[counter] <- as.numeric(temp[2])
+    name[counter] <- paste0(seq_name, "Structure", name[counter])
+    energy[counter] <- as.numeric(temp[3])
+    prob[counter] <- as.numeric(temp[4])
+    YeDingformat[[counter]] <- data.frame()
+  }
+  else if(startblock == 1){
+    tempdf <- strcapture(pattern, line, proto)
+    YeDingformat[[counter]] <- rbind(YeDingformat[[counter]], tempdf)
+  }
+}
+close(con)
+
+#seq_fasta <- "AGGGTCTACCGGGCCACCGCACACCATGTTGCCAGTCTCTAGGTCCCTGAGACCCTTTATTTTGTGAGGACATCCAGGGTCACATAAGAGGTTCTTGGGAGCCTGGCGTCTGGCCCAACCACACACCTGGGGAATTGC"
+seq_length <- as.numeric(nchar(seq_fasta))
+format_transfer <- function(df){
+  res <- rep(".", seq_length)
+  leftindex <- c()
+  rightindex <- c()
+  for(i in 1:length(df$left)){
+    leftindex <- c(leftindex, seq(df$left[i], df$left[i] + df$continue[i] - 1))
+    rightindex <- c(rightindex, seq(df$right[i] - df$continue[i] + 1,  df$right[i]))
+  }
+  for(i in leftindex) {res[i] <- "("}
+  for(i in rightindex) {res[i] <- ")"}
+  return(paste(res, collapse = ""))
+}
+
+for (i in 1:length(name)){
+  RNAFoldformat[i] <- format_transfer(YeDingformat[[i]])
+}
+
+sequence <- rep(seq_fasta, length(name))
+HairpInfo <- list(name, sequence, energy, prob, RNAFoldformat, YeDingformat)
+
+output <- data.frame(name, sequence, RNAFoldformat, as.character(energy), stringsAsFactors = F)
+
+#dirpath <- "./test_data/RNAcen_res.txt"
+write.table(output, dir_path, row_names = F, col_names = F)
+
+```
+
+### Job batching
+Using the GNU software `parallel`, we could easily batch our job in paralleling methods.
+
+```bash
+#!/bin/bash
+#SBATCH --partition=general
+#SBATCH --job-name=mir125_transfer
+#SBATCH --ntasks=8 --nodes=1
+#SBATCH --mem-per-cpu=6000
+#SBATCH --time=12:00:00
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=njutangjihong@gmail.com
+
+#Script description: This is the parallelized bash script to transfer all the mir125 Ye Ding folding result file to the RNAFold format, using the written R script "Jihong_read_and_transfer_YDformat_to_RNAFoldformat.R".
+#Author: Jihong Tang
+#Date: July 29, 2019
+
+module load R
+module load parallel
+dir="$HOME/project/miRNA_model/Sfold_info/Sfold_result/"
+
+mirtest=$dir"mir125/"
+cd $mirtest
+find . -mindepth 1 -maxdepth 1 -type d -printf '%f\n' > folder_name.txt
+foo () {	
+  local subdir=$1
+  dir="$HOME/project/miRNA_model/Sfold_info/Sfold_result/"
+  mirtest=$dir"mir125/"
+  file_path=$mirtest$subdir"/sample_1000.out"
+  dic_path=$dir"mir125_ref.txt"
+  dir_path=$mirtest$subdir"/RNAcen_res.txt"
+  Rscript $HOME/scripts/R/Jihong_read_and_transfer_YDformat_to_RNAFoldformat.R $file_path $subdir $dic_path $dir_path
+  echo "Job "$subdir" finished!"
+}
+export -f foo
+find . -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | parallel "foo {}"
+```
+
+The following command is to find all subfolders' name in a certain folder in the `Linux` system, and is very useful in this job batching step.
+```bash
+find . -mindepth 1 -maxdepth 1 -type d -printf '%f\n' 
+```
+
 
 # Author 
 Jihong Tang &lt;njutangjihong@gmail.com&gt; Instructed by Jun Lu and Dingyao Zhang
