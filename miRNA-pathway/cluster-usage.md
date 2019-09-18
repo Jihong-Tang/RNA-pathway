@@ -94,6 +94,13 @@ ctrl+b ;
 #Kill tmux server, along with all sessions:
 tmux kill-server
 ```
+The way to resize the pane in the tmux sessions:
+
+```bash
+ctrl+b :
+resize-pane -direction num
+# direction could be: U, D, L, R
+```
 
 # Software usage
 There are many softwares installed in the Yale clusters, and they are packed into the form of modules. If we want to use these softwares, we could load or unload these modules to help finish our work.
